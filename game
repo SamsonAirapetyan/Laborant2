@@ -1,0 +1,57 @@
+include <stdio.h>
+#include <stdlib.h>
+#include <ncurses.h>
+
+
+int ball(int x, int y, int x_wall, int y_wall)
+{
+
+    return x;    
+}
+
+
+int main() {
+    int x_polya = 80;
+    int y_polya = 0;
+    int x_rocket=3;
+    int stop =1;
+    char vector;
+    int x_ball = 2;
+    int y_ball = 2;
+    while (stop!=0)
+    {
+        while (y_polya != 26 ) 
+        { 
+            for (int i=0; x_polya>i;i++)
+            {
+                if (y_polya == y_ball && x_polya == x_ball)
+                {
+                    printf("*");
+                }
+                if (y_polya==0 || y_polya==25) printf("-");
+                else if (i==x_rocket && y_polya== 1 && i < x_polya-5) 
+                {
+                    printf("0[]0");
+                    i+=4;
+                }
+                else
+                {
+                    if(i==0||i==x_polya-1) printf("|");
+                    else printf(" ");
+                }
+            }
+            y_polya++;
+            printf("\n");
+        }
+        printf("\n");
+        y_polya=0;
+        x_polya=80;
+        x_ball++;
+        y_ball++;
+        scanf("%c", &vector);
+        if(vector == 'd') x_rocket++;
+        else if (vector == 'a') x_rocket--;
+        else if (vector == '0') stop = 0;
+    }
+    return 0;
+}
